@@ -30,6 +30,7 @@ export default function Home() {
       <div>
         <ContactUs />
       </div>
+      <div className=" h-screen" />
     </main>
   );
 }
