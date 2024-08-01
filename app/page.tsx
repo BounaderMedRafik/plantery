@@ -1,15 +1,18 @@
 import Hero from "@/components/marketing/Hero";
 import MarketingNav from "@/components/marketing/MarketingNav";
-import Image from "next/image";
+import OurServices from "@/components/marketing/OurServices";
 
 export default function Home() {
   return (
-    <main className=" bg-background text-text min-h-screen">
+    <main className="  min-h-screen">
       <div>
         <MarketingNav />
       </div>
       <div>
         <Hero />
+      </div>
+      <div>
+        <OurServices />
       </div>
     </main>
   );

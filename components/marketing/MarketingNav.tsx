@@ -93,11 +93,7 @@ const MarketingNav = () => {
         <div>
           <Drawer>
             <DrawerTrigger asChild>
-              <Button
-                className=" size-12 opacity-50"
-                variant={"outline"}
-                size={"icon"}
-              >
+              <Button variant={"link"} size={"icon"}>
                 <MenuIcon size={30} />
               </Button>
             </DrawerTrigger>
