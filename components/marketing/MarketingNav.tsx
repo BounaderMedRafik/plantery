@@ -43,7 +43,7 @@ const links = [
 const MarketingNav = () => {
   return (
     <>
-      <div className="hidden md:flex items-center justify-between px-10 py-5 fixed top-0 w-full bg-background  border-b border-text-b">
+      <div className="hidden z-50 md:flex items-center justify-between px-10 py-5 fixed top-0 w-full bg-background  border-b border-text-b">
         <a href="/" className="flex items-center gap-2 hover:opacity-75">
           <img className=" w-14" src="/brand/nicerlogo.png" />
           <div className=" text-3xl font-bold uppercase text-primary">
@@ -86,7 +86,7 @@ const MarketingNav = () => {
         </div>
       </div>
       {/* --For Mobile-- */}
-      <div className=" md:hidden bg-background flex items-center justify-between p-10 py-5 fixed top-0 w-full border-b border-b-text">
+      <div className=" md:hidden bg-background z-50 flex items-center justify-between p-10 py-5 fixed top-0 w-full border-b border-b-text">
         <div>
           <img className="w-12" src="/brand/nicerlogo.png" alt="" />
         </div>

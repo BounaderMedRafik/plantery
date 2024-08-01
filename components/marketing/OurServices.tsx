@@ -12,34 +12,53 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 const OurServices = () => {
   return (
-    <div className="mt-10 p-2">
-      <div className=" grid grid-cols-6 ">
-        <div className=" col-span-3 uppercase  md:text-6xl font-black lg:text-8xl max-w-6xl">
-          Our Gardening services we provide
-        </div>
-        <div className=" col-span-3 pt-3 px-5">
-          <div className="text-xl leading-tight ">
-            Our team of experienced gardeners offers a comprehensive range of
-            services to transform your outdoor space into a thriving oasis. From
-            meticulous lawn care and expert planting to creative garden design
-            and meticulous maintenance, we provide tailored solutions to meet
-            your specific needs. We are committed to delivering exceptional
-            service and creating stunning outdoor environments that enhance your
-            property's beauty and value.
+    <>
+      <div className="mt-10 p-2 hidden md:block">
+        <div className=" grid grid-cols-6 ">
+          <div className=" col-span-3 uppercase  md:text-6xl font-black lg:text-8xl max-w-6xl">
+            Our Gardening services we provide
+          </div>
+          <div className=" col-span-3 pt-3 px-5">
+            <div className="text-xl leading-tight ">
+              Our team of experienced gardeners offers a comprehensive range of
+              services to transform your outdoor space into a thriving oasis.
+              From meticulous lawn care and expert planting to creative garden
+              design and meticulous maintenance, we provide tailored solutions
+              to meet your specific needs. We are committed to delivering
+              exceptional service and creating stunning outdoor environments
+              that enhance your property's beauty and value.
+            </div>
           </div>
         </div>
+        <div>
+          <LosServisocPc />
+        </div>
       </div>
-      <div>
-        <LosServisoc />
+      {/* for mobile  */}
+      <div className=" md:hidden mt-10 p-2">
+        <div className="text-5xl uppercase pl-2">
+          Our Gardening services we provide
+        </div>
+        <div className="text-xs max-w-sm pl-2 opacity-75 leading-tight mt-3 ">
+          Our team of experienced gardeners offers a comprehensive range of
+          services to transform your outdoor space into a thriving oasis. From
+          meticulous lawn care and expert planting to creative garden design and
+          meticulous maintenance, we provide tailored solutions to meet your
+          specific needs. We are committed to delivering exceptional service and
+          creating stunning outdoor environments that enhance your property's
+          beauty and value.
+        </div>
+        <LosServisocMobile />
       </div>
-    </div>
+    </>
   );
 };
 
-const LosServisoc = () => {
+const LosServisocPc = () => {
   const [category, setCategory] = useState("All");
 
   const filteredServices =
@@ -86,6 +105,62 @@ const LosServisoc = () => {
             </div>
           ))}
         </CarouselContent>
+      </div>
+    </Carousel>
+  );
+};
+
+const LosServisocMobile = () => {
+  const [category, setCategory] = useState("All");
+
+  const filteredServices =
+    category === "All"
+      ? gardenerServices
+      : gardenerServices.filter((service) => service.category === category);
+  return (
+    <Carousel>
+      <div className="mt-4">
+        <div>
+          <ScrollArea>
+            <div className=" flex items-start gap-0.5">
+              {gardenerServiceCategories.map((item, i) => (
+                <div key={i}>
+                  <Button
+                    onClick={() => setCategory(item)}
+                    variant={item === category ? "default" : "outline"}
+                    size={"lg"}
+                  >
+                    {item}
+                  </Button>
+                </div>
+              ))}
+            </div>
+            <div className=" mt-5">
+              <ScrollBar orientation="horizontal" />
+            </div>
+          </ScrollArea>
+        </div>
+        <div className=" flex mt-2  items-center gap-2">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
+        <div className="mt-10">
+          <CarouselContent className="flex items-center">
+            {filteredServices.map((item, i) => (
+              <div key={i}>
+                <CarouselItem className="w-96">
+                  <ServiceTemp
+                    category={item.category}
+                    title={item.title}
+                    description={item.description}
+                    image={item.image}
+                    price={item.price}
+                  />
+                </CarouselItem>
+              </div>
+            ))}
+          </CarouselContent>
+        </div>
       </div>
     </Carousel>
   );
